@@ -10,12 +10,14 @@
 <body class="bg-slate-50 text-slate-800 p-4 md:p-8">
 
     <div class="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-slate-100">
+        <!-- Header -->
         <div class="text-center border-b border-slate-200 pb-6 mb-6">
             <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Comprehensive Wound Assessment Tool (CWAT)</h1>
             <p class="text-sm text-slate-500 font-medium mt-1">Prototype Version 1.1 for Face Validity</p>
         </div>
 
         <form id="cwatForm" class="space-y-8">
+            <!-- SECTION A: PATIENT PROFILE -->
             <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
                 <h2 class="text-md font-bold text-slate-900 tracking-wide uppercase mb-4">SECTION A: Patient Profile & Contextual Data</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
@@ -53,82 +55,157 @@
                 </div>
             </div>
 
+            <!-- SECTION B: CLINICAL ASSESSMENT -->
             <div>
                 <h2 class="text-md font-bold text-slate-900 tracking-wide uppercase mb-1">SECTION B: Clinical Assessment (Panchalakshana)</h2>
                 <p class="text-xs text-slate-500 mb-4">Please tick (✔) all features observed. Multiple selections allowed.</p>
 
+                <!-- 1. AKRITI (Morphology) -->
                 <div class="border border-slate-200 rounded-xl overflow-hidden mb-6 shadow-sm">
                     <div class="bg-slate-800 text-white p-3 text-xs font-bold uppercase tracking-wider">1. AKRITI (Morphology)</div>
                     <div class="grid grid-cols-3 bg-slate-100 p-2 text-xs font-bold text-slate-700 border-b border-slate-200">
                         <div>VATA TRAITS</div><div>PITTA TRAITS</div><div>KAPHA TRAITS</div>
                     </div>
                     <div class="grid grid-cols-3 p-3 gap-4 text-xs">
-                        <div class="space-y-2">
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="vata-check"> <span>Margin: Thin / Rough</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="vata-check"> <span>Floor: Dry / Poor Granulation</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="vata-check"> <span>Periwound: Dry / Rough / Fibrosed</span></label>
+                        <!-- Vata -->
+                        <div class="space-y-3">
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Margin / Edge</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Thin</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Rough</span></label>
+                            </div>
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Wound Floor</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Dry</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Poor Granulation</span></label>
+                            </div>
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Periwound Skin</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Dry</span></label>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Rough</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Fibrosed</span></label>
+                            </div>
                         </div>
-                        <div class="space-y-2">
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="pitta-check"> <span>Margin: Inflamed / Soft / Eroded</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="pitta-check"> <span>Floor: Sloughy / Friable</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="pitta-check"> <span>Periwound: Soft / Macerated</span></label>
+                        <!-- Pitta -->
+                        <div class="space-y-3">
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Margin / Edge</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Inflamed</span></label>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Soft</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Eroded</span></label>
+                            </div>
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Wound Floor</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Sloughy</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Friable</span></label>
+                            </div>
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Periwound Skin</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Soft</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Macerated</span></label>
+                            </div>
                         </div>
-                        <div class="space-y-2">
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="kapha-check"> <span>Margin: Thick / Raised / Indurated / Rolled</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="kapha-check"> <span>Floor: Moist / Hyper-granulated</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="kapha-check"> <span>Periwound: Thick / Indurated</span></label>
+                        <!-- Kapha -->
+                        <div class="space-y-3">
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Margin / Edge</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Thick</span></label>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Raised</span></label>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Indurated</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Rolled</span></label>
+                            </div>
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Wound Floor</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Moist</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Hyper-granulated</span></label>
+                            </div>
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Periwound Skin</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Thick</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Indurated</span></label>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- 2. VARNA (Color) -->
                 <div class="border border-slate-200 rounded-xl overflow-hidden mb-6 shadow-sm">
                     <div class="bg-slate-800 text-white p-3 text-xs font-bold uppercase tracking-wider">2. VARNA (Color)</div>
                     <div class="grid grid-cols-3 bg-slate-100 p-2 text-xs font-bold text-slate-700 border-b border-slate-200">
                         <div>VATA TRAITS</div><div>PITTA TRAITS</div><div>KAPHA TRAITS</div>
                     </div>
                     <div class="grid grid-cols-3 p-3 gap-4 text-xs">
-                        <div class="space-y-2">
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="vata-check"> <span>Bed: Blackish / Dusky</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="vata-check"> <span>Periwound: Dark / Hyperpigmented</span></label>
+                        <!-- Vata -->
+                        <div class="space-y-3">
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Wound Bed</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Blackish</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Dusky</span></label>
+                            </div>
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Periwound</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Dark</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Hyperpigmented</span></label>
+                            </div>
                         </div>
-                        <div class="space-y-2">
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="pitta-check"> <span>Bed: Bright Red / Yellowish</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="pitta-check"> <span>Periwound: Reddish / Erythematous</span></label>
+                        <!-- Pitta -->
+                        <div class="space-y-3">
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Wound Bed</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Bright Red</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Yellowish</span></label>
+                            </div>
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Periwound</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Reddish</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Erythematous</span></label>
+                            </div>
                         </div>
-                        <div class="space-y-2">
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="kapha-check"> <span>Bed: Pale / White</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="kapha-check"> <span>Periwound: Pale / Whitish</span></label>
+                        <!-- Kapha -->
+                        <div class="space-y-3">
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Wound Bed</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Pale</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>White</span></label>
+                            </div>
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Periwound</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Pale</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Whitish</span></label>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- 3. SRAVA (Discharge / Exudate) -->
                 <div class="border border-slate-200 rounded-xl overflow-hidden mb-6 shadow-sm">
-                    <div class="bg-slate-800 text-white p-3 text-xs font-bold uppercase tracking-wider">3. SRAVA (Discharge)</div>
+                    <div class="bg-slate-800 text-white p-3 text-xs font-bold uppercase tracking-wider">3. SRAVA (Discharge / Exudate)</div>
                     <div class="grid grid-cols-3 bg-slate-100 p-2 text-xs font-bold text-slate-700 border-b border-slate-200">
                         <div>VATA TRAITS</div><div>PITTA TRAITS</div><div>KAPHA TRAITS</div>
                     </div>
                     <div class="grid grid-cols-3 p-3 gap-4 text-xs">
                         <div class="space-y-2">
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="vata-check"> <span>Scanty Quantity</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="vata-check"> <span>Serous Nature</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="vata-check"> <span>Brownish / Dark Color</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="vata-check"> <span>Thin / Watery Consistency</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Scanty Quantity</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Serous Nature</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Brownish / Dark Color</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Thin / Watery Consistency</span></label>
                         </div>
                         <div class="space-y-2">
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="pitta-check"> <span>Moderate Quantity</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="pitta-check"> <span>Purulent Nature</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="pitta-check"> <span>Yellow-Red Color</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="pitta-check"> <span>Viscous Consistency</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Moderate Quantity</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Purulent Nature</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Yellow-Red Color</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Viscous Consistency</span></label>
                         </div>
                         <div class="space-y-2">
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="kapha-check"> <span>Copious Quantity</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="kapha-check"> <span>Mucoid Nature</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="kapha-check"> <span>Whitish Color</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="kapha-check"> <span>Thick / Sticky Consistency</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Copious Quantity</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Mucoid Nature</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Whitish Color</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Thick / Sticky Consistency</span></label>
                         </div>
                     </div>
                 </div>
 
+                <!-- 4. VEDANA (Pain Quality) & 5. GANDHA (Odor) -->
                 <div class="border border-slate-200 rounded-xl overflow-hidden mb-6 shadow-sm">
                     <div class="bg-slate-800 text-white p-3 text-xs font-bold uppercase tracking-wider">4. VEDANA (Pain) & 5. GANDHA (Odor)</div>
                     <div class="grid grid-cols-3 bg-slate-100 p-2 text-xs font-bold text-slate-700 border-b border-slate-200">
@@ -136,24 +213,25 @@
                     </div>
                     <div class="grid grid-cols-3 p-3 gap-4 text-xs">
                         <div class="space-y-2">
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="vata-check"> <span>Pricking / Throbbing / Cutting / Numbness</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="vata-check"> <span>Intermittent Pattern</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="vata-check"> <span>No Odor</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Pricking (Toda) / Throbbing (Sphurana) / Cutting (Bhedana) / Numbness (Supti)</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Intermittent Pattern</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>No Odor</span></label>
                         </div>
                         <div class="space-y-2">
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="pitta-check"> <span>Burning / Fuming Sensation</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="pitta-check"> <span>Continuous Pattern</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="pitta-check"> <span>Pungent / Strong / Fetid Odor</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Burning (Daha) / Fuming (Osha)</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Continuous Pattern</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Pungent / Strong / Fetid Odor</span></label>
                         </div>
                         <div class="space-y-2">
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="kapha-check"> <span>Itching / Dull Ache / Heaviness</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="kapha-check"> <span>Continuous Pattern</span></label>
-                            <label class="flex items-start space-x-2"><input type="checkbox" class="kapha-check"> <span>Musty Odor</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Itching (Kandu) / Dull Ache / Heaviness</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Continuous Pattern</span></label>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Musty Odor</span></label>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- SECTION C: LIVE AUTOMATED DIAGNOSTIC SCORING -->
             <div class="bg-blue-50 p-6 rounded-xl border border-blue-200 shadow-inner">
                 <h3 class="font-bold text-blue-900 uppercase tracking-wider text-xs mb-3">SECTION C: Cumulative Diagnostic Scoring</h3>
                 <div class="grid grid-cols-3 text-center mb-4 border-b border-blue-200 pb-4 text-sm">
@@ -167,6 +245,7 @@
                 </div>
             </div>
 
+            <!-- Form Submit -->
             <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold p-4 rounded-xl shadow-lg transition duration-150 transform active:scale-[0.99] cursor-pointer">
                 Lock and Save Digital Assessment
             </button>
@@ -202,7 +281,7 @@
             let diagnosis = "Pending Selection...";
 
             if (maxScore > 0) {
-                // Find all keys equal to or within 1 point difference (<2 rule)
+                // Find all keys equal to or within 1 point difference (<2 rule)[cite: 1]
                 let matchedDoshas = Object.keys(scores).filter(key => (maxScore - scores[key]) < 2);
                 
                 if (matchedDoshas.length === 3) diagnosis = "Tridosha";
