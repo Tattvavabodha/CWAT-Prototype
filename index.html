@@ -10,14 +10,12 @@
 <body class="bg-slate-50 text-slate-800 p-4 md:p-8">
 
     <div class="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-slate-100">
-        <!-- Header -->
         <div class="text-center border-b border-slate-200 pb-6 mb-6">
             <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Comprehensive Wound Assessment Tool (CWAT)</h1>
             <p class="text-sm text-slate-500 font-medium mt-1">Prototype Version 1.1 for Face Validity</p>
         </div>
 
         <form id="cwatForm" class="space-y-8">
-            <!-- SECTION A: PATIENT PROFILE -->
             <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
                 <h2 class="text-md font-bold text-slate-900 tracking-wide uppercase mb-4">SECTION A: Patient Profile & Contextual Data</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
@@ -54,7 +52,6 @@
                     <div id="painValue" class="text-sm font-bold text-blue-600 mt-1">Score: 0/10</div>
                 </div>
 
-                <!-- Wound Photo Capture Feature -->
                 <div class="mt-4 border-t border-slate-200 pt-4">
                     <label class="block text-xs font-bold text-slate-600 uppercase mb-2">Wound Photo Documentation</label>
                     <input type="file" id="woundPhoto" accept="image/*" capture="environment" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer">
@@ -62,19 +59,16 @@
                 </div>
             </div>
 
-            <!-- SECTION B: CLINICAL ASSESSMENT -->
             <div>
                 <h2 class="text-md font-bold text-slate-900 tracking-wide uppercase mb-1">SECTION B: Clinical Assessment (Panchalakshana)</h2>
                 <p class="text-xs text-slate-500 mb-4">Please tick (✔) all features observed. Multiple selections allowed.</p>
 
-                <!-- 1. AKRITI (Morphology) -->
                 <div class="border border-slate-200 rounded-xl overflow-hidden mb-6 shadow-sm">
                     <div class="bg-slate-800 text-white p-3 text-xs font-bold uppercase tracking-wider">1. AKRITI (Morphology)</div>
                     <div class="grid grid-cols-3 bg-slate-100 p-2 text-xs font-bold text-slate-700 border-b border-slate-200">
                         <div>VATA TRAITS</div><div>PITTA TRAITS</div><div>KAPHA TRAITS</div>
                     </div>
                     <div class="grid grid-cols-3 p-3 gap-4 text-xs">
-                        <!-- Vata -->
                         <div class="space-y-3">
                             <div>
                                 <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Margin / Edge</span>
@@ -93,7 +87,6 @@
                                 <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Fibrosed</span></label>
                             </div>
                         </div>
-                        <!-- Pitta -->
                         <div class="space-y-3">
                             <div>
                                 <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Margin / Edge</span>
@@ -112,7 +105,6 @@
                                 <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Macerated</span></label>
                             </div>
                         </div>
-                        <!-- Kapha -->
                         <div class="space-y-3">
                             <div>
                                 <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Margin / Edge</span>
@@ -135,14 +127,12 @@
                     </div>
                 </div>
 
-                <!-- 2. VARNA (Color) -->
                 <div class="border border-slate-200 rounded-xl overflow-hidden mb-6 shadow-sm">
                     <div class="bg-slate-800 text-white p-3 text-xs font-bold uppercase tracking-wider">2. VARNA (Color)</div>
                     <div class="grid grid-cols-3 bg-slate-100 p-2 text-xs font-bold text-slate-700 border-b border-slate-200">
                         <div>VATA TRAITS</div><div>PITTA TRAITS</div><div>KAPHA TRAITS</div>
                     </div>
                     <div class="grid grid-cols-3 p-3 gap-4 text-xs">
-                        <!-- Vata -->
                         <div class="space-y-3">
                             <div>
                                 <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Wound Bed</span>
@@ -155,7 +145,6 @@
                                 <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Hyperpigmented</span></label>
                             </div>
                         </div>
-                        <!-- Pitta -->
                         <div class="space-y-3">
                             <div>
                                 <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Wound Bed</span>
@@ -168,7 +157,6 @@
                                 <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Erythematous</span></label>
                             </div>
                         </div>
-                        <!-- Kapha -->
                         <div class="space-y-3">
                             <div>
                                 <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Wound Bed</span>
@@ -184,7 +172,6 @@
                     </div>
                 </div>
 
-                <!-- 3. SRAVA (Discharge / Exudate) -->
                 <div class="border border-slate-200 rounded-xl overflow-hidden mb-6 shadow-sm">
                     <div class="bg-slate-800 text-white p-3 text-xs font-bold uppercase tracking-wider">3. SRAVA (Discharge / Exudate)</div>
                     <div class="grid grid-cols-3 bg-slate-100 p-2 text-xs font-bold text-slate-700 border-b border-slate-200">
@@ -212,33 +199,72 @@
                     </div>
                 </div>
 
-                <!-- 4. VEDANA (Pain Quality) & 5. GANDHA (Odor) -->
                 <div class="border border-slate-200 rounded-xl overflow-hidden mb-6 shadow-sm">
-                    <div class="bg-slate-800 text-white p-3 text-xs font-bold uppercase tracking-wider">4. VEDANA (Pain) & 5. GANDHA (Odor)</div>
+                    <div class="bg-slate-800 text-white p-3 text-xs font-bold uppercase tracking-wider">4. VEDANA (Pain Quality)</div>
+                    <div class="grid grid-cols-3 bg-slate-100 p-2 text-xs font-bold text-slate-700 border-b border-slate-200">
+                        <div>VATA TRAITS</div><div>PITTA TRAITS</div><div>KAPHA TRAITS</div>
+                    </div>
+                    <div class="grid grid-cols-3 p-3 gap-4 text-xs">
+                        <div class="space-y-3">
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Type of Sensation</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Pricking (Toda)</span></label>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Throbbing (Sphurana)</span></label>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Cutting (Bhedana)</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Numbness (Supti)</span></label>
+                            </div>
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Pattern</span>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Intermittent</span></label>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Type of Sensation</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Burning (Daha)</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Fuming (Osha)</span></label>
+                            </div>
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Pattern</span>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Continuous</span></label>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Type of Sensation</span>
+                                <label class="flex items-start space-x-2 mb-1 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Itching (Kandu)</span></label>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Dull Ache / Heaviness</span></label>
+                            </div>
+                            <div>
+                                <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Pattern</span>
+                                <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Continuous</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 rounded-xl overflow-hidden mb-6 shadow-sm">
+                    <div class="bg-slate-800 text-white p-3 text-xs font-bold uppercase tracking-wider">5. GANDHA (Odor)</div>
                     <div class="grid grid-cols-3 bg-slate-100 p-2 text-xs font-bold text-slate-700 border-b border-slate-200">
                         <div>VATA TRAITS</div><div>PITTA TRAITS</div><div>KAPHA TRAITS</div>
                     </div>
                     <div class="grid grid-cols-3 p-3 gap-4 text-xs">
                         <div class="space-y-2">
-                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Pricking (Toda) / Throbbing (Sphurana) / Cutting (Bhedana) / Numbness (Supti)</span></label>
-                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>Intermittent Pattern</span></label>
+                            <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Character</span>
                             <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="vata-check"> <span>No Odor</span></label>
                         </div>
                         <div class="space-y-2">
-                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Burning (Daha) / Fuming (Osha)</span></label>
-                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Continuous Pattern</span></label>
-                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Pungent / Strong / Fetid Odor</span></label>
+                            <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Character</span>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="pitta-check"> <span>Pungent / Strong / Fetid</span></label>
                         </div>
                         <div class="space-y-2">
-                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Itching (Kandu) / Dull Ache / Heaviness</span></label>
-                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Continuous Pattern</span></label>
-                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Musty Odor</span></label>
+                            <span class="block font-bold text-slate-400 mb-1 text-[10px] uppercase">Character</span>
+                            <label class="flex items-start space-x-2 cursor-pointer"><input type="checkbox" class="kapha-check"> <span>Musty</span></label>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- SECTION C: LIVE AUTOMATED DIAGNOSTIC SCORING -->
             <div class="bg-blue-50 p-6 rounded-xl border border-blue-200 shadow-inner">
                 <h3 class="font-bold text-blue-900 uppercase tracking-wider text-xs mb-3">SECTION C: Cumulative Diagnostic Scoring</h3>
                 <div class="grid grid-cols-3 text-center mb-4 border-b border-blue-200 pb-4 text-sm">
@@ -252,7 +278,6 @@
                 </div>
             </div>
 
-            <!-- Form Submit -->
             <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold p-4 rounded-xl shadow-lg transition duration-150 transform active:scale-[0.99] cursor-pointer">
                 Lock and Save Digital Assessment
             </button>
@@ -273,7 +298,7 @@
             painValue.innerText = `Score: ${painSlider.value}/10`;
         });
 
-        // --- 3. MEDICAL ALGORITHM ENGINE ---
+        // --- 3. REVISED SCORING MATRIX ALGORITHM WITH DIFFERENCE RULES ---
         document.addEventListener('change', () => {
             const vataCount = document.querySelectorAll('.vata-check:checked').length;
             const pittaCount = document.querySelectorAll('.pitta-check:checked').length;
@@ -286,30 +311,33 @@
             let diagnosis = "Pending Selection...";
 
             if (vataCount > 0 || pittaCount > 0 || kaphaCount > 0) {
-                // Organize items into an array to cleanly manage matrix sorting
-                let sortedDoshas = [
+                let items = [
                     { name: 'Vata', score: vataCount },
                     { name: 'Pitta', score: pittaCount },
                     { name: 'Kapha', score: kaphaCount }
-                ].sort((a, b) => b.score - a.score); // Highest score at index 0[cite: 1]
+                ];
 
-                let max = sortedDoshas[0];
-                let mid = sortedDoshas[1];
-                let min = sortedDoshas[2];
+                // Sort descending: highest score first
+                items.sort((a, b) => b.score - a.score);
 
-                // Rule 1: All 3 close (Difference between highest and lowest is less than 2)[cite: 1]
-                if ((max.score - min.score) < 2) {
-                    diagnosis = `Tridosha - ${max.name}-${mid.name} dominant`;
+                let highest = items[0];
+                let second = items[1];
+                let lowest = items[2];
+
+                // Rule 1: Tridosha condition (Spread between all 3 is less than 2 points)
+                if ((highest.score - lowest.score) < 2) {
+                    diagnosis = `Tridosha - ${highest.name}-${second.name} dominant`;
                 } 
-                // Rule 2: Only the top two are close (Difference less than 2)[cite: 1]
-                else if ((max.score - mid.score) < 2) {
-                    diagnosis = `${max.name}-${mid.name}ja`;
+                // Rule 2: Dual Dosha / Samsarga condition (Top 2 have a difference less than 2 points)
+                else if ((highest.score - second.score) < 2) {
+                    diagnosis = `${highest.name}-${second.name}ja`;
                 } 
-                // Rule 3: Single dominant category[cite: 1]
+                // Rule 3: Single dominant category
                 else {
-                    diagnosis = `${max.name} Dominant`;
+                    diagnosis = `${highest.name} Dominant`;
                 }
             }
+
             document.getElementById('lblDiagnosis').innerText = diagnosis;
         });
 
@@ -317,7 +345,7 @@
         document.getElementById('cwatForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = document.getElementById('submitBtn');
-            submitBtn.innerText = "Saving to Cloud Database...";
+            submitBtn.innerText = "Uploading Assessment Data...";
             submitBtn.disabled = true;
             
             let photoUrl = null;
@@ -328,7 +356,7 @@
                 const fileExtension = file.name.split('.').pop();
                 const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExtension}`;
                 
-                const { error: uploadError } = await _supabase.storage
+                const { data: uploadData, error: uploadError } = await _supabase.storage
                     .from('wound-photos')
                     .upload(fileName, file);
                 
@@ -349,8 +377,8 @@
                 vata_score: parseInt(document.getElementById('lblVata').innerText),
                 pitta_score: parseInt(document.getElementById('lblPitta').innerText),
                 kapha_score: parseInt(document.getElementById('lblKapha').innerText),
-                final_diagnosis: document.getElementById('lblDiagnosis').innerText
-                // wound_photo_url: photoUrl // To use this, run the storage patch script inside your SQL query editor!
+                final_diagnosis: document.getElementById('lblDiagnosis').innerText,
+                wound_photo_url: photoUrl
             };
 
             const { error } = await _supabase.from('assessments').insert([payload]);
