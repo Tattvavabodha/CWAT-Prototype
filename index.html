@@ -48,10 +48,17 @@
                     </div>
                 </div>
 
-                <div>
+                <div class="mb-4">
                     <label class="block text-xs font-bold text-slate-600 uppercase">Pain Intensity (VAS: 0 = No Pain, 10 = Worst Possible Pain)</label>
                     <input type="range" id="painScore" min="0" max="10" value="0" class="w-full mt-2 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
                     <div id="painValue" class="text-sm font-bold text-blue-600 mt-1">Score: 0/10</div>
+                </div>
+
+                <!-- Wound Photo Capture Feature -->
+                <div class="mt-4 border-t border-slate-200 pt-4">
+                    <label class="block text-xs font-bold text-slate-600 uppercase mb-2">Wound Photo Documentation</label>
+                    <input type="file" id="woundPhoto" accept="image/*" capture="environment" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer">
+                    <p class="text-[11px] text-slate-400 mt-1">Tapping on mobile devices will trigger the camera directly.</p>
                 </div>
             </div>
 
@@ -246,7 +253,7 @@
             </div>
 
             <!-- Form Submit -->
-            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold p-4 rounded-xl shadow-lg transition duration-150 transform active:scale-[0.99] cursor-pointer">
+            <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold p-4 rounded-xl shadow-lg transition duration-150 transform active:scale-[0.99] cursor-pointer">
                 Lock and Save Digital Assessment
             </button>
         </form>
@@ -266,7 +273,7 @@
             painValue.innerText = `Score: ${painSlider.value}/10`;
         });
 
-        // --- 3. SCORING MATRIX ALGORITHM ---
+        // --- 3. MEDICAL ALGORITHM ENGINE ---
         document.addEventListener('change', () => {
             const vataCount = document.querySelectorAll('.vata-check:checked').length;
             const pittaCount = document.querySelectorAll('.pitta-check:checked').length;
@@ -276,17 +283,32 @@
             document.getElementById('lblPitta').innerText = pittaCount;
             document.getElementById('lblKapha').innerText = kaphaCount;
 
-            let scores = { Vata: vataCount, Pitta: pittaCount, Kapha: kaphaCount };
-            let maxScore = Math.max(vataCount, pittaCount, kaphaCount);
             let diagnosis = "Pending Selection...";
 
-            if (maxScore > 0) {
-                // Find all keys equal to or within 1 point difference (<2 rule)[cite: 1]
-                let matchedDoshas = Object.keys(scores).filter(key => (maxScore - scores[key]) < 2);
-                
-                if (matchedDoshas.length === 3) diagnosis = "Tridosha";
-                else if (matchedDoshas.length === 2) diagnosis = matchedDoshas.join("-");
-                else diagnosis = matchedDoshas[0];
+            if (vataCount > 0 || pittaCount > 0 || kaphaCount > 0) {
+                // Organize items into an array to cleanly manage matrix sorting
+                let sortedDoshas = [
+                    { name: 'Vata', score: vataCount },
+                    { name: 'Pitta', score: pittaCount },
+                    { name: 'Kapha', score: kaphaCount }
+                ].sort((a, b) => b.score - a.score); // Highest score at index 0[cite: 1]
+
+                let max = sortedDoshas[0];
+                let mid = sortedDoshas[1];
+                let min = sortedDoshas[2];
+
+                // Rule 1: All 3 close (Difference between highest and lowest is less than 2)[cite: 1]
+                if ((max.score - min.score) < 2) {
+                    diagnosis = `Tridosha - ${max.name}-${mid.name} dominant`;
+                } 
+                // Rule 2: Only the top two are close (Difference less than 2)[cite: 1]
+                else if ((max.score - mid.score) < 2) {
+                    diagnosis = `${max.name}-${mid.name}ja`;
+                } 
+                // Rule 3: Single dominant category[cite: 1]
+                else {
+                    diagnosis = `${max.name} Dominant`;
+                }
             }
             document.getElementById('lblDiagnosis').innerText = diagnosis;
         });
@@ -294,7 +316,28 @@
         // --- 4. DATA TRANSMISSION ---
         document.getElementById('cwatForm').addEventListener('submit', async (e) => {
             e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.innerText = "Saving to Cloud Database...";
+            submitBtn.disabled = true;
             
+            let photoUrl = null;
+            const fileInput = document.getElementById('woundPhoto');
+            
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const fileExtension = file.name.split('.').pop();
+                const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExtension}`;
+                
+                const { error: uploadError } = await _supabase.storage
+                    .from('wound-photos')
+                    .upload(fileName, file);
+                
+                if (!uploadError) {
+                    const { data: linkData } = _supabase.storage.from('wound-photos').getPublicUrl(fileName);
+                    photoUrl = linkData.publicUrl;
+                }
+            }
+
             const checkedComorbidities = Array.from(document.querySelectorAll('.comorbidity-check:checked')).map(el => el.value);
 
             const payload = {
@@ -307,9 +350,13 @@
                 pitta_score: parseInt(document.getElementById('lblPitta').innerText),
                 kapha_score: parseInt(document.getElementById('lblKapha').innerText),
                 final_diagnosis: document.getElementById('lblDiagnosis').innerText
+                // wound_photo_url: photoUrl // To use this, run the storage patch script inside your SQL query editor!
             };
 
             const { error } = await _supabase.from('assessments').insert([payload]);
+
+            submitBtn.innerText = "Lock and Save Digital Assessment";
+            submitBtn.disabled = false;
 
             if (error) {
                 alert('Database submission failed: ' + error.message);
