@@ -18,7 +18,6 @@
             .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
             .gap-4 { gap: 0.5rem !important; }
             .space-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem !important; }
-            /* Force parameters into a tight side-by-side format for paper efficiency */
             .print-two-col { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 0.75rem !important; }
             .break-inside-avoid { break-inside: avoid !important; }
         }
@@ -26,6 +25,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 p-4 md:p-8">
 
+    <!-- LOGIN SCREEN -->
     <div id="authContainer" class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-xl border border-slate-100 mt-12 no-print">
         <h2 class="text-xl font-bold text-center text-slate-900 mb-6">CWAT Portal Login</h2>
         <div class="space-y-4">
@@ -44,10 +44,13 @@
         </div>
     </div>
 
+    <!-- MAIN APP INTERFACE -->
     <div id="appContainer" class="hidden max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
         
+        <!-- LEFT/CENTER: FORM ENTRY -->
         <div class="lg:col-span-2 bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-slate-100 print-box">
             
+            <!-- Banner showing if viewing historical archive data -->
             <div id="readOnlyBanner" class="hidden no-print items-center justify-between bg-amber-600 text-white p-3 rounded-xl mb-6 text-sm font-bold shadow-md">
                 <span>📂 Viewing Historical Record (Read-Only Mode)</span>
                 <button type="button" onclick="exitReadOnlyMode()" class="bg-amber-800 hover:bg-amber-900 px-3 py-1 rounded-lg text-xs transition cursor-pointer">Back to Data Entry Mode</button>
@@ -59,6 +62,7 @@
                 <button type="button" onclick="handleLogout()" class="no-print mt-3 text-xs bg-red-50 text-red-600 px-3 py-1 rounded-full border border-red-200 hover:bg-red-100 transition cursor-pointer">Log Out</button>
             </div>
 
+            <!-- SEARCH SYSTEM FOR FOLLOW UPS -->
             <div id="searchBoxWrapper" class="bg-blue-50 border border-blue-200 p-4 rounded-xl mb-6 no-print relative">
                 <label class="block text-xs font-bold text-blue-900 uppercase mb-1">🔍 Search Existing Patient for Follow-Up Assessment</label>
                 <input type="text" id="patientSearchInput" oninput="searchPatients(this.value)" placeholder="Search by Auto ID or Name..." class="w-full p-2.5 bg-white border border-blue-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 text-sm">
@@ -71,6 +75,7 @@
             </div>
 
             <form id="cwatForm" class="space-y-6">
+                <!-- SECTION A: PATIENT PROFILE -->
                 <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 break-inside-avoid">
                     <h2 class="text-md font-bold text-slate-900 tracking-wide uppercase mb-4">SECTION A: Patient Profile & Contextual Data</h2>
                     
@@ -127,45 +132,48 @@
                     <div id="printPhotoContainer" class="hidden mt-2 text-xs font-bold text-blue-700"></div>
                 </div>
 
+                <!-- SECTION B: CLINICAL ASSESSMENT -->
                 <div class="print-two-col space-y-0">
+                    <!-- 1. AKRITI -->
                     <div class="border border-slate-200 rounded-xl overflow-hidden mb-4 shadow-sm break-inside-avoid">
-                        <div class="bg-slate-800 text-white p-2.5 text-xs font-bold uppercase tracking-wider">1. AKRITI (Morphology)</div>
+                        <div class="bg-slate-800 text-white p-2.5 text-xs font-bold uppercase tracking-wider">1. AKRITI (Morphology)[cite: 1]</div>
                         <div class="grid grid-cols-3 bg-slate-100 p-1.5 text-[10px] font-bold text-slate-700 border-b border-slate-200">
                             <div>VATA</div><div>PITTA</div><div>KAPHA</div>
                         </div>
                         <div class="grid grid-cols-3 p-2 gap-2 text-[11px]">
                             <div class="space-y-2">
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="akriti_thin"> <span>Thin</span></label>
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="akriti_rough"> <span>Rough</span></label>
+                                <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="akriti_thin"> <span>Thin Edge</span></label>
+                                <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="akriti_rough"> <span>Rough Edge</span></label>
                                 <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="akriti_dry_floor"> <span>Dry Floor</span></label>
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="akriti_poor_gran"> <span>Poor Gran</span></label>
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="akriti_dry_peri"> <span>Dry Peri</span></label>
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="akriti_rough_peri"> <span>Rough Peri</span></label>
+                                <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="akriti_poor_gran"> <span>Poor Gran.</span></label>
+                                <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="akriti_dry_peri"> <span>Dry Skin</span></label>
+                                <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="akriti_rough_peri"> <span>Rough Skin</span></label>
                                 <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="akriti_fibrosed"> <span>Fibrosed</span></label>
                             </div>
                             <div class="space-y-2">
                                 <label class="flex items-start space-x-1"><input type="checkbox" class="pitta-check" data-id="akriti_inflamed"> <span>Inflamed</span></label>
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="pitta-check" data-id="akriti_soft"> <span>Soft</span></label>
+                                <label class="flex items-start space-x-1"><input type="checkbox" class="pitta-check" data-id="akriti_soft"> <span>Soft Edge</span></label>
                                 <label class="flex items-start space-x-1"><input type="checkbox" class="pitta-check" data-id="akriti_eroded"> <span>Eroded</span></label>
                                 <label class="flex items-start space-x-1"><input type="checkbox" class="pitta-check" data-id="akriti_sloughy"> <span>Sloughy</span></label>
                                 <label class="flex items-start space-x-1"><input type="checkbox" class="pitta-check" data-id="akriti_friable"> <span>Friable</span></label>
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="pitta-check" data-id="akriti_soft_peri"> <span>Soft Peri</span></label>
+                                <label class="flex items-start space-x-1"><input type="checkbox" class="pitta-check" data-id="akriti_soft_peri"> <span>Soft Skin</span></label>
                                 <label class="flex items-start space-x-1"><input type="checkbox" class="pitta-check" data-id="akriti_macerated"> <span>Macerated</span></label>
                             </div>
                             <div class="space-y-2">
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="akriti_thick"> <span>Thick</span></label>
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="akriti_raised"> <span>Raised</span></label>
+                                <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="akriti_thick"> <span>Thick Edge</span></label>
+                                <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="akriti_raised"> <span>Raised Edge</span></label>
                                 <label class="flex items-start space-x-2"><input type="checkbox" class="kapha-check" data-id="akriti_indurated"> <span>Indurated</span></label>
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="akriti_rolled"> <span>Rolled</span></label>
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="akriti_moist"> <span>Moist</span></label>
+                                <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="akriti_rolled"> <span>Rolled Edge</span></label>
+                                <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="akriti_moist"> <span>Moist Floor</span></label>
                                 <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="akriti_hyper"> <span>Hyper-gran</span></label>
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="akriti_thick_peri"> <span>Thick Peri</span></label>
+                                <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="akriti_thick_peri"> <span>Thick Skin</span></label>
                             </div>
                         </div>
                     </div>
 
+                    <!-- 2. VARNA -->
                     <div class="border border-slate-200 rounded-xl overflow-hidden mb-4 shadow-sm break-inside-avoid">
-                        <div class="bg-slate-800 text-white p-2.5 text-xs font-bold uppercase tracking-wider">2. VARNA (Color)</div>
+                        <div class="bg-slate-800 text-white p-2.5 text-xs font-bold uppercase tracking-wider">2. VARNA (Color)[cite: 1]</div>
                         <div class="grid grid-cols-3 bg-slate-100 p-1.5 text-[10px] font-bold text-slate-700 border-b border-slate-200">
                             <div>VATA</div><div>PITTA</div><div>KAPHA</div>
                         </div>
@@ -191,8 +199,9 @@
                         </div>
                     </div>
 
+                    <!-- 3. SRAVA -->
                     <div class="border border-slate-200 rounded-xl overflow-hidden mb-4 shadow-sm break-inside-avoid">
-                        <div class="bg-slate-800 text-white p-2.5 text-xs font-bold uppercase tracking-wider">3. SRAVA (Discharge)</div>
+                        <div class="bg-slate-800 text-white p-2.5 text-xs font-bold uppercase tracking-wider">3. SRAVA (Discharge / Exudate)[cite: 1]</div>
                         <div class="grid grid-cols-3 bg-slate-100 p-1.5 text-[10px] font-bold text-slate-700 border-b border-slate-200">
                             <div>VATA</div><div>PITTA</div><div>KAPHA</div>
                         </div>
@@ -218,39 +227,62 @@
                         </div>
                     </div>
 
+                    <!-- 4. VEDANA -->
                     <div class="border border-slate-200 rounded-xl overflow-hidden mb-4 shadow-sm break-inside-avoid">
-                        <div class="bg-slate-800 text-white p-2.5 text-xs font-bold uppercase tracking-wider">4. VEDANA (Pain Quality)</div>
+                        <div class="bg-slate-800 text-white p-2.5 text-xs font-bold uppercase tracking-wider">4. VEDANA (Pain Quality)[cite: 1]</div>
+                        <div class="grid grid-cols-3 bg-slate-100 p-1.5 text-[10px] font-bold text-slate-700 border-b border-slate-200">
+                            <div>VATA</div><div>PITTA</div><div>KAPHA</div>
+                        </div>
                         <div class="grid grid-cols-3 p-2 gap-2 text-[11px]">
-                            <div class="space-y-2">
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="vedana_sens"> <span>Toda / Sphurana</span></label>
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="vedana_inter"> <span>Intermittent</span></label>
+                            <div class="space-y-3">
+                                <div><span class="block font-bold text-slate-400 text-[9px] uppercase">Type</span>
+                                    <label class="flex items-start space-x-1 mb-1"><input type="checkbox" class="vata-check" data-id="vedana_toda"> <span>Toda</span></label>
+                                    <label class="flex items-start space-x-1 mb-1"><input type="checkbox" class="vata-check" data-id="vedana_sphurana"> <span>Sphurana</span></label>
+                                    <label class="flex items-start space-x-1 mb-1"><input type="checkbox" class="vata-check" data-id="vedana_bhedana"> <span>Bhedana</span></label>
+                                    <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="vedana_supti"> <span>Supti</span></label></div>
+                                <div><span class="block font-bold text-slate-400 text-[9px] uppercase">Pattern</span>
+                                    <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="vedana_intermittent"> <span>Intermittent</span></label></div>
                             </div>
-                            <div class="space-y-2">
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="pitta-check" data-id="vedana_burn"> <span>Daha / Osha</span></label>
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="pitta-check" data-id="vedana_cont_p"> <span>Continuous</span></label>
+                            <div class="space-y-3">
+                                <div><span class="block font-bold text-slate-400 text-[9px] uppercase">Type</span>
+                                    <label class="flex items-start space-x-1 mb-1"><input type="checkbox" class="pitta-check" data-id="vedana_daha"> <span>Daha</span></label>
+                                    <label class="flex items-start space-x-1"><input type="checkbox" class="pitta-check" data-id="vedana_osha"> <span>Osha</span></label></div>
+                                <div><span class="block font-bold text-slate-400 text-[9px] uppercase">Pattern</span>
+                                    <label class="flex items-start space-x-1"><input type="checkbox" class="pitta-check" data-id="vedana_continuous_p"> <span>Continuous</span></label></div>
                             </div>
-                            <div class="space-y-2">
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="vedana_itch"> <span>Kandu/Heavy</span></label>
-                                <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="vedana_cont_k"> <span>Continuous</span></label>
+                            <div class="space-y-3">
+                                <div><span class="block font-bold text-slate-400 text-[9px] uppercase">Type</span>
+                                    <label class="flex items-start space-x-1 mb-1"><input type="checkbox" class="kapha-check" data-id="vedana_kandu"> <span>Kandu</span></label>
+                                    <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="vedana_heaviness"> <span>Dull Ache</span></label></div>
+                                <div><span class="block font-bold text-slate-400 text-[9px] uppercase">Pattern</span>
+                                    <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="vedana_continuous_k"> <span>Continuous</span></label></div>
                             </div>
                         </div>
                     </div>
 
+                    <!-- 5. GANDHA -->
                     <div class="border border-slate-200 rounded-xl overflow-hidden mb-4 shadow-sm break-inside-avoid">
-                        <div class="bg-slate-800 text-white p-2.5 text-xs font-bold uppercase tracking-wider">5. GANDHA (Odor)</div>
+                        <div class="bg-slate-800 text-white p-2.5 text-xs font-bold uppercase tracking-wider">5. GANDHA (Odor)[cite: 1]</div>
+                        <div class="grid grid-cols-3 bg-slate-100 p-1.5 text-[10px] font-bold text-slate-700 border-b border-slate-200">
+                            <div>VATA</div><div>PITTA</div><div>KAPHA</div>
+                        </div>
                         <div class="grid grid-cols-3 p-2 gap-2 text-[11px]">
-                            <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="gandha_none"> <span>No Odor</span></label>
-                            <label class="flex items-start space-x-1"><input type="checkbox" class="pitta-check" data-id="gandha_fetid"> <span>Pungent/Fetid</span></label>
-                            <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="gandha_musty"> <span>Musty</span></label>
+                            <div><span class="block font-bold text-slate-400 text-[9px] uppercase">Character</span>
+                                <label class="flex items-start space-x-1"><input type="checkbox" class="vata-check" data-id="gandha_none"> <span>No Odor</span></label></div>
+                            <div><span class="block font-bold text-slate-400 text-[9px] uppercase">Character</span>
+                                <label class="flex items-start space-x-1"><input type="checkbox" class="pitta-check" data-id="gandha_fetid"> <span>Pungent/Fetid</span></label></div>
+                            <div><span class="block font-bold text-slate-400 text-[9px] uppercase">Character</span>
+                                <label class="flex items-start space-x-1"><input type="checkbox" class="kapha-check" data-id="gandha_musty"> <span>Musty</span></label></div>
                         </div>
                     </div>
                 </div>
 
+                <!-- DIAGNOSTIC DASHBOARD -->
                 <div class="bg-blue-50 p-4 rounded-xl border border-blue-200 shadow-inner break-inside-avoid">
                     <div class="grid grid-cols-3 text-center mb-2 border-b border-blue-200 pb-2 text-xs">
                         <div>Vata: <span id="lblVata" class="font-black text-sm text-blue-900">0</span></div>
                         <div>Pitta: <span id="lblPitta" class="font-black text-sm text-blue-900">0</span></div>
-                        <div>Kapha: <span id="lblKapha" class="font-black text-xl text-blue-900">0</span></div>
+                        <div>Kapha: <span id="lblKapha" class="font-black text-sm text-blue-900">0</span></div>
                     </div>
                     <div class="text-center">
                         <div id="lblDiagnosis" class="text-blue-800 font-black text-xl mt-0.5">Pending Selection...</div>
@@ -268,6 +300,7 @@
             </form>
         </div>
 
+        <!-- RIGHT: PATIENT HISTORY MATRIX -->
         <div class="bg-slate-100 p-6 rounded-2xl border border-slate-200 shadow-md h-[fit-content] max-h-[85vh] overflow-y-auto no-print">
             <h2 class="text-md font-bold text-slate-900 uppercase tracking-wider mb-4 border-b border-slate-300 pb-2">Patient Records Directory</h2>
             <div id="historyList" class="space-y-3 text-xs"></div>
@@ -275,6 +308,7 @@
     </div>
 
     <script>
+        // --- 1. CONFIGURATION ---
         const SUPABASE_URL = "https://sbngbgsgzkaaievnjhbi.supabase.co"; 
         const SUPABASE_KEY = "sb_publishable_zLzCO9_XXopjSX2ksMDOjQ_XQzfG8fb"; 
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -361,57 +395,50 @@
             document.getElementById('activePatientBadge').classList.remove('flex');
         }
 
-        // --- READ VIEW: RECALL HISTORICAL SHEET FROM DATA OBJECTS ---
+        // --- READ VIEW: RECALL HISTORICAL SHEET ---
         window.viewHistoricalRecord = function(assessmentId) {
             const record = globalHistoricalCache.find(r => r.id === assessmentId);
             if (!record) return;
 
-            // Trigger structural Read-Only container changes
             document.getElementById('readOnlyBanner').classList.remove('hidden');
             document.getElementById('readOnlyBanner').classList.add('flex');
             document.getElementById('searchBoxWrapper').classList.add('no-print', 'hidden');
             document.getElementById('photoUploadSection').classList.add('hidden');
             
-            // Render photo hyperlink string explicitly if present for single page print output
             const printPhoto = document.getElementById('printPhotoContainer');
             if(record.wound_photo_url) {
-                printPhoto.innerHTML = `Linked Wound Photo URL: <a href="${record.wound_photo_url}" target="_blank" class="underline">${record.wound_photo_url}</a>`;
+                printPhoto.innerHTML = `Linked Wound Photo: <a href="${record.wound_photo_url}" target="_blank" class="underline">${record.wound_photo_url}</a>`;
                 printPhoto.classList.remove('hidden');
             } else {
                 printPhoto.classList.add('hidden');
             }
 
-            // Bind data to demographic profile inputs
             document.getElementById('patientCustomId').value = record.patients?.custom_id || 'N/A';
             document.getElementById('assessmentDate').value = record.assessment_date;
             document.getElementById('patientName').value = record.patients?.name || 'N/A';
             document.getElementById('age').value = record.patients?.age || '';
             document.getElementById('gender').value = record.patients?.gender || 'Male';
 
-            // Check clinical checkbox matrices using stored metadata structures
             const meta = record.comorbidities || {};
             
-            // Map demographics checkbox inputs
             document.querySelectorAll('.comorbidity-check').forEach(cb => {
                 cb.checked = Array.isArray(meta.comorbidities_array) && meta.comorbidities_array.includes(cb.value);
             });
 
-            // Re-apply checked items to Section B clinical checklist parameters
             document.querySelectorAll('#cwatForm input[type="checkbox"]:not(.comorbidity-check)').forEach(cb => {
                 const dataId = cb.getAttribute('data-id');
                 cb.checked = Array.isArray(meta.checked_clinical_ids) && meta.checked_clinical_ids.includes(dataId);
             });
 
-            // Bind slider value outputs
+            const painSlider = document.getElementById('painScore');
+            const painValue = document.getElementById('painValue');
             painSlider.value = record.pain_score || 0;
             painValue.innerText = `Score: ${painSlider.value}/10`;
 
-            // Lock all interactive attributes across the form node elements
             document.querySelectorAll('#cwatForm input, #cwatForm select, #cwatForm button[type="submit"]').forEach(el => {
                 el.disabled = true;
             });
 
-            // Run metric update routines to cleanly output scores on diagnostic layout dashboards
             triggerMetricScoringCalculations();
         };
 
@@ -422,20 +449,20 @@
             document.getElementById('photoUploadSection').classList.remove('hidden');
             document.getElementById('printPhotoContainer').classList.add('hidden');
 
-            // Free all input nodes elements
             document.querySelectorAll('#cwatForm input, #cwatForm select, #cwatForm button[type="submit"]').forEach(el => {
                 el.disabled = false;
             });
 
-            // Clear previous form states clean
             document.getElementById('cwatForm').reset();
             clearSelectedPatient();
-            painValue.innerText = "Score: 0/10";
+            document.getElementById('painValue').innerText = "Score: 0/10";
             document.getElementById('assessmentDate').valueAsDate = new Date();
             triggerMetricScoringCalculations();
         };
 
         // --- AUTOMATED EVALUATION LABELS ---
+        const painSlider = document.getElementById('painScore');
+        const painValue = document.getElementById('painValue');
         painSlider.addEventListener('input', () => { painValue.innerText = `Score: ${painSlider.value}/10`; });
         document.addEventListener('change', (e) => { if(e.target.closest('#cwatForm')) triggerMetricScoringCalculations(); });
 
@@ -468,7 +495,6 @@
                 return;
             }
 
-            // Sync structural local memory buffer to enable zero-latency click views recalls
             globalHistoricalCache = data;
 
             container.innerHTML = data.map(record => `
@@ -510,7 +536,7 @@
                     .select();
 
                 if (pErr) {
-                    alert("Patient setup matrix initialization error: " + pErr.message);
+                    alert("Patient registration failed: " + pErr.message);
                     submitBtn.innerText = "Lock and Save Assessment";
                     submitBtn.disabled = false;
                     return;
@@ -527,7 +553,6 @@
                 if (!upErr) photoUrl = supabaseClient.storage.from('wound-photos').getPublicUrl(name).data.publicUrl;
             }
 
-            // Capture precise checkbox identifier arrays into the jsonb metadata container columns
             const checkedComorbiditiesArray = Array.from(document.querySelectorAll('.comorbidity-check:checked')).map(el => el.value);
             const checkedClinicalIdsArray = Array.from(document.querySelectorAll('#cwatForm input[type="checkbox"]:checked:not(.comorbidity-check)')).map(el => el.getAttribute('data-id'));
 
@@ -551,12 +576,12 @@
             submitBtn.disabled = false;
 
             if (aErr) {
-                alert('Assessment row insert transaction failed: ' + aErr.message);
+                alert('Assessment storage transaction error: ' + aErr.message);
             } else {
                 alert(`Assessment written securely under system ID code: ${customId}`);
                 document.getElementById('cwatForm').reset();
                 clearSelectedPatient();
-                painValue.innerText = "Score: 0/10";
+                document.getElementById('painValue').innerText = "Score: 0/10";
                 document.getElementById('assessmentDate').valueAsDate = new Date();
                 triggerMetricScoringCalculations();
                 loadPatientDirectory();
